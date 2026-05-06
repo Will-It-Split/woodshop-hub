@@ -33,7 +33,6 @@
       opacity: 0.85;
     }
 
-    /* TOP NAV TABS */
     .tabs {
       display: flex;
       justify-content: center;
@@ -60,17 +59,22 @@
       background: #4a2e16;
     }
 
-    .active {
-      background: #4a2e16;
+    .section {
+      display: none;
+      padding: 20px;
+    }
+
+    .show {
+      display: block;
     }
 
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 15px;
-      padding: 30px;
       max-width: 900px;
       margin: auto;
+      padding: 20px;
     }
 
     .card {
@@ -94,14 +98,6 @@
       margin-top: 10px;
     }
 
-    .section {
-      display: none;
-    }
-
-    .show {
-      display: block;
-    }
-
     footer {
       margin-top: 40px;
       padding: 20px;
@@ -115,184 +111,111 @@
 
 <header>
   <h1>🪵 Andrew's Woodshop Hub</h1>
-  <p>Pick your tools, projects, and builds</p>
+  <p>All tools, games, and projects in one place</p>
 </header>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('home')">Home</div>
-  <div class="tab" onclick="showTab('websites')">Websites</div>
-  <div class="tab" onclick="showTab('projects')">Projects</div>
-  <div class="tab" onclick="window.location.href='will-it-split.html'">Will It Split</div>
+  <div class="tab active" onclick="showMain('home')">Home</div>
+  <div class="tab" onclick="showMain('websites')">Websites</div>
+  <div class="tab" onclick="showMain('projects')">Repos</div>
+  <div class="tab" onclick="showMain('willit')">Will It Split</div>
 </div>
 
 <!-- HOME -->
 <div id="home" class="section show">
   <div class="container">
-    <div class="card">Welcome to the Woodshop Hub<br><br>Use the tabs above to explore everything.</div>
+    <div class="card">Welcome to the Woodshop Hub<br><br>Pick a tab to explore everything.</div>
   </div>
 </div>
 
-<!-- WEBSITES TAB -->
+<!-- WEBSITES -->
 <div id="websites" class="section">
   <div class="container">
+
     <div class="card">
-      <div>Main Hub</div>
-      <a href="#">GitHub Pages Hub</a>
+      <div>Will It Split V1</div>
+      <a href="https://will-it-split.github.io/will-it-split-v1/">Open</a>
     </div>
 
     <div class="card">
-      <div>3D Factory</div>
-      <a href="https://yourusername.github.io/3d-factory">Open</a>
+      <div>Test</div>
+      <a href="https://will-it-split.github.io/Test-/">Open</a>
     </div>
+
+    <div class="card">
+      <div>Woodshop Hub</div>
+      <a href="https://will-it-split.github.io/woodshop-hub/">Open</a>
+    </div>
+
   </div>
 </div>
 
-<!-- PROJECTS TAB -->
+<!-- REPOS -->
 <div id="projects" class="section">
   <div class="container">
+
     <div class="card">
-      <div>Will It Split Repo</div>
-      <a href="https://github.com/yourusername/will-it-split">GitHub Repo</a>
+      <div>Will It Split V1</div>
+      <a href="https://github.com/Will-It-Split/will-it-split-v1">GitHub Repo</a>
     </div>
 
     <div class="card">
-      <div>3D Factory Repo</div>
-      <a href="https://github.com/yourusername/3d-factory">GitHub Repo</a>
+      <div>Test</div>
+      <a href="https://github.com/Will-It-Split/Test-">GitHub Repo</a>
     </div>
+
+    <div class="card">
+      <div>Woodshop Hub</div>
+      <a href="https://github.com/Will-It-Split/woodshop-hub">GitHub Repo</a>
+    </div>
+
   </div>
+</div>
+
+<!-- WILL IT SPLIT -->
+<div id="willit" class="section">
+
+  <div class="tabs">
+    <div class="tab" onclick="showWill('w-web')">Website Versions</div>
+    <div class="tab" onclick="showWill('w-proj')">Repo Versions</div>
+  </div>
+
+  <div id="w-web" class="container">
+
+    <div class="card">
+      <div>Will It Split V1</div>
+      <a href="https://will-it-split.github.io/will-it-split-v1/">Open</a>
+    </div>
+
+  </div>
+
+  <div id="w-proj" class="container" style="display:none;">
+
+    <div class="card">
+      <div>Will It Split V1</div>
+      <a href="https://github.com/Will-It-Split/will-it-split-v1">GitHub</a>
+    </div>
+
+  </div>
+
 </div>
 
 <footer>
-  Built in the woodshop ⚒️ | Pixel Tools Hub
+  Built in the woodshop ⚒️ | Single File Hub System
 </footer>
 
 <script>
-function showTab(tab) {
-  const sections = document.querySelectorAll('.section');
-  const tabs = document.querySelectorAll('.tab');
+function showMain(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
 
-  sections.forEach(s => s.classList.remove('show'));
-  tabs.forEach(t => t.classList.remove('active'));
-
-  document.getElementById(tab).classList.add('show');
+  document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
   event.target.classList.add('active');
 }
-</script>
 
-</body>
-</html>
-
-
-<!-- =============================== -->
-<!-- WILL IT SPLIT PAGE (separate file) -->
-<!-- Save this as: will-it-split.html -->
-<!-- =============================== -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Will It Split Hub</title>
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-    body {
-      margin: 0;
-      font-family: 'Press Start 2P', monospace;
-      background: #1b1208;
-      color: #ffe2b3;
-      text-align: center;
-    }
-
-    header {
-      padding: 30px;
-      background: #3a2412;
-      border-bottom: 4px solid #a06a3b;
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px;
-      background: #2b1d0e;
-      border-bottom: 3px solid #a06a3b;
-    }
-
-    .tab {
-      padding: 10px;
-      font-size: 10px;
-      background: #3a2412;
-      border: 2px solid #a06a3b;
-      cursor: pointer;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .card {
-      background: #3a2412;
-      border: 3px solid #a06a3b;
-      padding: 20px;
-    }
-
-    a {
-      color: #ffd9a0;
-      font-size: 10px;
-      display: block;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>⚒️ Will It Split</h1>
-  <p>Choose your version</p>
-</header>
-
-<div class="tabs">
-  <div class="tab" onclick="show('websites')">Website Builds</div>
-  <div class="tab" onclick="show('projects')">Project Repos</div>
-</div>
-
-<div id="websites" class="container">
-  <div class="card">
-    <div>V1 Website</div>
-    <a href="#">Open</a>
-  </div>
-
-  <div class="card">
-    <div>V2 Website</div>
-    <a href="#">Open</a>
-  </div>
-</div>
-
-<div id="projects" class="container" style="display:none;">
-  <div class="card">
-    <div>V1 Repo</div>
-    <a href="https://github.com/yourusername/will-it-split-v1">GitHub</a>
-  </div>
-
-  <div class="card">
-    <div>V2 Repo</div>
-    <a href="https://github.com/yourusername/will-it-split-v2">GitHub</a>
-  </div>
-</div>
-
-<script>
-function show(id) {
-  document.getElementById('websites').style.display = id === 'websites' ? 'grid' : 'none';
-  document.getElementById('projects').style.display = id === 'projects' ? 'grid' : 'none';
+function showWill(id) {
+  document.getElementById('w-web').style.display = id === 'w-web' ? 'grid' : 'none';
+  document.getElementById('w-proj').style.display = id === 'w-proj' ? 'grid' : 'none';
 }
 </script>
 
