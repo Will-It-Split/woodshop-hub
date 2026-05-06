@@ -3,229 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Andrew's Woodshop Hub</title>
+  <title>Andrew Hub</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: black;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
 
-    /* 🪵 Animated wood background */
-    body {
-      margin: 0;
-      font-family: 'Press Start 2P', monospace;
-      color: #f5e6c8;
-      text-align: center;
-      background: linear-gradient(120deg, #2b1d0e, #3a2412, #2b1d0e);
-      background-size: 300% 300%;
-      animation: woodMove 12s ease infinite;
-    }
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
 
-    @keyframes woodMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 40px 20px;
+}
 
-    header {
-      padding: 30px 20px;
-      background: rgba(75, 46, 22, 0.8);
-      border-bottom: 4px solid #a06a3b;
-      backdrop-filter: blur(4px);
-    }
+header {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+}
 
-    h1 {
-      font-size: 16px;
-      color: #ffd9a0;
-    }
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
 
-    p { font-size: 10px; opacity: 0.85; }
+nav a {
+  padding: 10px 20px;
+  border: 2px solid #00ffff;
+  border-radius: 8px;
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px #00ffff;
+  transition: 0.3s ease-in-out;
+  cursor:pointer;
+}
 
-    /* Tabs */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      padding: 10px;
-      background: rgba(58,36,18,0.8);
-      border-bottom: 3px solid #a06a3b;
-    }
+nav a:hover {
+  background: #00ffff;
+  color: black;
+  box-shadow: 0 0 16px #00ffff, 0 0 32px #00ffff;
+  transform: scale(1.05);
+}
 
-    .tab {
-      cursor: pointer;
-      padding: 10px;
-      font-size: 10px;
-      background: #2b1d0e;
-      border: 2px solid #a06a3b;
-      color: #ffe2b3;
-      box-shadow: 0 4px 0 #1a0f08;
-    }
+h1 {
+  font-size: 42px;
+  margin-top: 30px;
+}
 
-    .tab:hover { transform: translateY(-2px); }
+p {
+  font-size: 18px;
+  color: #ccc;
+  max-width: 700px;
+  margin: 20px auto;
+}
 
-    .section { display: none; padding: 20px; }
-    .show { display: block; }
+.button {
+  display: inline-block;
+  margin: 15px 10px;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 10px;
+  color: #00ffff;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid #00ffff;
+  text-decoration: none;
+  box-shadow: 0 0 10px #00ffff, 0 0 25px #00ffff inset;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    /* Search bar */
-    .search {
-      margin: 15px auto;
-      padding: 10px;
-      width: 80%;
-      max-width: 400px;
-      font-family: inherit;
-      font-size: 10px;
-      background: #3a2412;
-      border: 2px solid #a06a3b;
-      color: #ffe2b3;
-    }
+.button:hover {
+  background: #00ffff;
+  color: black;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff inset;
+  transform: scale(1.05);
+}
 
-    /* Folders */
-    details {
-      margin: 10px auto;
-      max-width: 900px;
-      background: rgba(58,36,18,0.6);
-      border: 2px solid #a06a3b;
-      padding: 10px;
-    }
+.section { display:none; }
+.section.show { display:block; }
 
-    summary {
-      cursor: pointer;
-      font-size: 10px;
-      color: #ffd9a0;
-    }
+.card {
+  display:inline-block;
+  margin:10px;
+  padding:15px;
+  border-radius:10px;
+  border:2px solid #00ffff;
+  box-shadow:0 0 10px #00ffff;
+  background:rgba(0,0,0,0.4);
+  min-width:220px;
+}
 
-    /* Cards */
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-      padding: 10px;
-    }
-
-    .card {
-      background: #3a2412;
-      border: 3px solid #a06a3b;
-      padding: 15px;
-      box-shadow: 0 6px 0 #1a0f08;
-    }
-
-    .card:hover { transform: translateY(-5px); }
-
-    a {
-      color: #ffe2b3;
-      font-size: 10px;
-      display: block;
-      margin-top: 8px;
-      text-decoration: none;
-    }
-
-    .play {
-      margin-top: 8px;
-      display: inline-block;
-      padding: 5px;
-      border: 2px solid #a06a3b;
-      background: #2b1d0e;
-      cursor: pointer;
-    }
-
-    /* WILL IT SPLIT GAME STYLE */
-    .game {
-      background: radial-gradient(circle, #1b1208, #000);
-      min-height: 400px;
-      padding: 20px;
-    }
-
-    .big-btn {
-      display: block;
-      margin: 10px auto;
-      padding: 15px;
-      border: 3px solid #a06a3b;
-      background: #3a2412;
-      cursor: pointer;
-      width: 200px;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 8px;
-      opacity: 0.7;
-    }
+.search {
+  padding:10px;
+  width:60%;
+  max-width:400px;
+  border:2px solid #00ffff;
+  background:black;
+  color:#00ffff;
+  margin:20px;
+}
   </style>
 </head>
 
 <body>
 
+<canvas id="bg"></canvas>
+
+<div class="content">
+
 <header>
-  <h1>🪵 Woodshop Hub</h1>
-  <p>Dev dashboard + game launcher</p>
+  <h1>Andrew Hub</h1>
+  <p>Projects • Websites • Repos</p>
+
+  <nav>
+    <a onclick="show('home')">Home</a>
+    <a onclick="show('web')">Websites</a>
+    <a onclick="show('repos')">Repos</a>
+    <a onclick="show('willit')">Will It Split</a>
+  </nav>
 </header>
 
-<div class="tabs">
-  <div class="tab" onclick="show('home')">Home</div>
-  <div class="tab" onclick="show('websites')">Websites</div>
-  <div class="tab" onclick="show('repos')">Repos</div>
-  <div class="tab" onclick="show('willit')">Will It Split</div>
-</div>
-
-<input class="search" placeholder="Search projects..." onkeyup="filterCards(this.value)" />
-
-<!-- HOME -->
 <div id="home" class="section show">
-  <div class="card">Welcome to the Woodshop Hub</div>
+  <div class="card">Welcome to Andrew's Hub</div>
 </div>
 
-<!-- WEBSITES -->
-<div id="websites" class="section">
-  <details open>
-    <summary>🌐 Websites</summary>
-    <div class="container">
-
-      <div class="card">
-        Will It Split V1
-        <a href="https://will-it-split.github.io/will-it-split-v1/">Open</a>
-        <div class="play" onclick="window.open('https://will-it-split.github.io/will-it-split-v1/')">▶ Play</div>
-      </div>
-
-      <div class="card">
-        Test
-        <a href="https://will-it-split.github.io/Test-/">Open</a>
-        <div class="play" onclick="window.open('https://will-it-split.github.io/Test-/')">▶ Play</div>
-      </div>
-
-      <div class="card">
-        Woodshop Hub
-        <a href="https://will-it-split.github.io/woodshop-hub/">Open</a>
-        <div class="play" onclick="window.open('https://will-it-split.github.io/woodshop-hub/')">▶ Play</div>
-      </div>
-
-    </div>
-  </details>
+<div id="web" class="section">
+    <div class="button" onclick="window.open('https://will-it-split.github.io/will-it-split-v1/')">Play V1</div>
+    <div class="button" onclick="window.open('https://will-it-split.github.io/Test-/')">Play Test</div>
+    <div class="button" onclick="window.open('https://will-it-split.github.io/woodshop-hub/')">Vew Hub</div>
 </div>
 
-<!-- REPOS -->
 <div id="repos" class="section">
-  <details open>
-    <summary>📦 Repos</summary>
-    <div class="container">
-
-      <div class="card">Will It Split V1<a href="https://github.com/Will-It-Split/will-it-split-v1">GitHub</a></div>
-      <div class="card">Test<a href="https://github.com/Will-It-Split/Test-">GitHub</a></div>
-      <div class="card">Woodshop Hub<a href="https://github.com/Will-It-Split/woodshop-hub">GitHub</a></div>
-
-    </div>
-  </details>
+  <div class="button" onclick="window.open('https://github.com/Will-It-Split/will-it-split-v1')">Will It Split Current</div>
+  <div class="button" onclick="window.open('https://github.com/Will-It-Split/Test-')">Test</div>
+  <div class="button" onclick="window.open('https://github.com/Will-It-Split/woodshop-hub')">Woodshop Hub</div>
 </div>
 
-<!-- WILL IT SPLIT GAME HUB -->
-<div id="willit" class="section game">
-  <h2>⚒️ Will It Split</h2>
-  <p>Select a version</p>
+<div id="willit" class="section">
+  <h2>Will It Split</h2>
 
-  <div class="big-btn" onclick="window.open('https://will-it-split.github.io/will-it-split-v1/')">▶ Play V1</div>
-  <div class="big-btn" onclick="window.open('https://github.com/Will-It-Split/will-it-split-v1')">📦 V1 Repo</div>
+  <div class="button" onclick="window.open('https://will-it-split.github.io/will-it-split-v1/')">Play V1</div>
+
+  <div class="button" onclick="window.open('https://github.com/Will-It-Split/will-it-split-v1')">V1 Repo</div>
 
 </div>
 
-<footer>Built in the woodshop ⚒️</footer>
+</div>
 
 <script>
 function show(id){
@@ -233,9 +175,9 @@ function show(id){
   document.getElementById(id).classList.add('show');
 }
 
-function filterCards(q){
+function filter(q){
   document.querySelectorAll('.card').forEach(c=>{
-    c.style.display = c.innerText.toLowerCase().includes(q.toLowerCase()) ? 'block':'none';
+    c.style.display = c.innerText.toLowerCase().includes(q.toLowerCase()) ? 'inline-block':'none';
   });
 }
 </script>
