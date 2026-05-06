@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew's Woodshop Hub</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', monospace;
+      background: #2b1d0e;
+      color: #f5e6c8;
+      text-align: center;
+    }
+
+    header {
+      padding: 30px 20px;
+      background: linear-gradient(145deg, #4b2e16, #2b1d0e);
+      border-bottom: 4px solid #a06a3b;
+    }
+
+    h1 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #ffd9a0;
+    }
+
+    p {
+      font-size: 10px;
+      opacity: 0.85;
+    }
+
+    /* TOP NAV TABS */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 10px;
+      border-bottom: 3px solid #a06a3b;
+      background: #3a2412;
+    }
+
+    .tab {
+      cursor: pointer;
+      padding: 10px;
+      font-size: 10px;
+      background: #2b1d0e;
+      border: 2px solid #a06a3b;
+      color: #ffe2b3;
+      box-shadow: 0 4px 0 #1a0f08;
+      transition: 0.2s;
+    }
+
+    .tab:hover {
+      transform: translateY(-2px);
+      background: #4a2e16;
+    }
+
+    .active {
+      background: #4a2e16;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: #3a2412;
+      border: 3px solid #a06a3b;
+      padding: 20px;
+      box-shadow: 0 6px 0 #1a0f08;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: #4a2e16;
+    }
+
+    a {
+      text-decoration: none;
+      color: #ffe2b3;
+      font-size: 10px;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 8px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🪵 Andrew's Woodshop Hub</h1>
+  <p>Pick your tools, projects, and builds</p>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('home')">Home</div>
+  <div class="tab" onclick="showTab('websites')">Websites</div>
+  <div class="tab" onclick="showTab('projects')">Projects</div>
+  <div class="tab" onclick="window.location.href='will-it-split.html'">Will It Split</div>
+</div>
+
+<!-- HOME -->
+<div id="home" class="section show">
+  <div class="container">
+    <div class="card">Welcome to the Woodshop Hub<br><br>Use the tabs above to explore everything.</div>
+  </div>
+</div>
+
+<!-- WEBSITES TAB -->
+<div id="websites" class="section">
+  <div class="container">
+    <div class="card">
+      <div>Main Hub</div>
+      <a href="#">GitHub Pages Hub</a>
+    </div>
+
+    <div class="card">
+      <div>3D Factory</div>
+      <a href="https://yourusername.github.io/3d-factory">Open</a>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS TAB -->
+<div id="projects" class="section">
+  <div class="container">
+    <div class="card">
+      <div>Will It Split Repo</div>
+      <a href="https://github.com/yourusername/will-it-split">GitHub Repo</a>
+    </div>
+
+    <div class="card">
+      <div>3D Factory Repo</div>
+      <a href="https://github.com/yourusername/3d-factory">GitHub Repo</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Built in the woodshop ⚒️ | Pixel Tools Hub
+</footer>
+
+<script>
+function showTab(tab) {
+  const sections = document.querySelectorAll('.section');
+  const tabs = document.querySelectorAll('.tab');
+
+  sections.forEach(s => s.classList.remove('show'));
+  tabs.forEach(t => t.classList.remove('active'));
+
+  document.getElementById(tab).classList.add('show');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
+
+
+<!-- =============================== -->
+<!-- WILL IT SPLIT PAGE (separate file) -->
+<!-- Save this as: will-it-split.html -->
+<!-- =============================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will It Split Hub</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', monospace;
+      background: #1b1208;
+      color: #ffe2b3;
+      text-align: center;
+    }
+
+    header {
+      padding: 30px;
+      background: #3a2412;
+      border-bottom: 4px solid #a06a3b;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      background: #2b1d0e;
+      border-bottom: 3px solid #a06a3b;
+    }
+
+    .tab {
+      padding: 10px;
+      font-size: 10px;
+      background: #3a2412;
+      border: 2px solid #a06a3b;
+      cursor: pointer;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .card {
+      background: #3a2412;
+      border: 3px solid #a06a3b;
+      padding: 20px;
+    }
+
+    a {
+      color: #ffd9a0;
+      font-size: 10px;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚒️ Will It Split</h1>
+  <p>Choose your version</p>
+</header>
+
+<div class="tabs">
+  <div class="tab" onclick="show('websites')">Website Builds</div>
+  <div class="tab" onclick="show('projects')">Project Repos</div>
+</div>
+
+<div id="websites" class="container">
+  <div class="card">
+    <div>V1 Website</div>
+    <a href="#">Open</a>
+  </div>
+
+  <div class="card">
+    <div>V2 Website</div>
+    <a href="#">Open</a>
+  </div>
+</div>
+
+<div id="projects" class="container" style="display:none;">
+  <div class="card">
+    <div>V1 Repo</div>
+    <a href="https://github.com/yourusername/will-it-split-v1">GitHub</a>
+  </div>
+
+  <div class="card">
+    <div>V2 Repo</div>
+    <a href="https://github.com/yourusername/will-it-split-v2">GitHub</a>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  document.getElementById('websites').style.display = id === 'websites' ? 'grid' : 'none';
+  document.getElementById('projects').style.display = id === 'projects' ? 'grid' : 'none';
+}
+</script>
+
+</body>
+</html>
